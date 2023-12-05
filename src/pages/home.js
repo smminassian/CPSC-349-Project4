@@ -1,12 +1,28 @@
+import { Link } from "react-router-dom";
 import React from "react";
+import "./home.css";
 
-const HomePage = () => {
+
+export default function HomePage() {
   return (
     <div className="home-container">
-      <h1 className="text-white text-2xl font-bold mb-2">Home Page</h1>
-      <p className="text-white">Welcome to our website!</p>
+      <div className="contentPart">
+      <div className="sideBar">
+        <ul>
+          <li className="text-white text-2xl font-bold mb-2">
+            <Link to="/src/HomePageDirectories/Generate">Generate</Link>
+          </li>
+          <li className="text-white text-2xl font-bold mb-2">
+            <Link to="/src/HomePageDirectories/Blogs">Blogs</Link>
+          </li>
+        </ul>
+      </div>
     </div>
+    </div>
+
+      
   );
 };
 
-export default HomePage;
+
+
