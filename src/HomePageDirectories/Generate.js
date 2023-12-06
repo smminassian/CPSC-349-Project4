@@ -13,10 +13,13 @@ export default function GeneratePage() {
         <span className="text-white text-2x1 font-bold mb-2">Keyword: </span>
         <input type="text" name="Keyword"></input>
       </label>
+      <br></br>
+      <br></br>
+
       <label for="propNumber">
         <span className="text-white text-2x1 font-bold mb-2">Enter number of Blogs: </span>
-        <input type="number" name="propNumber" min={1} max={200} value={blogs}></input>
-        <input type="submit" onClick={numberOfBlogs(blogs)}></input>
+        <input type="number" name="propNumber" min={1} max={200} ></input>
+        <input type="submit"></input>
       </label>
 
       
