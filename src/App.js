@@ -6,6 +6,8 @@ import Contact from "./pages/contact";
 import Login from "./AuthenticationPages/login";
 import Logout from "./AuthenticationPages/logout";
 import Register from "./AuthenticationPages/register";
+import Generate from "./HomePageDirectories/Generate";
+import Blogs from "./HomePageDirectories/Blogs";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/AuthenticationPages/login" element={<Login />} />
           <Route path="/AuthenticationPages/logout" element={<Logout />} />
           <Route path="/AuthenticationPages/register" element={<Register />} />
+          <Route path="/HomePageDirectories/Generate" element={<Generate />} />
+          <Route path="/HomePageDirectories/Blogs" element={<Blogs />} />
         </Routes>
       </div>
     </>
