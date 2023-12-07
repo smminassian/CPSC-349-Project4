@@ -3,6 +3,7 @@ node_modules
 CHANGELOG.md
 LICENSE.md
 pocketbase
+pocketbase.exe
 pb_data/
 pb_migrations/
 
