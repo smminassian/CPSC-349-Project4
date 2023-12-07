@@ -10,7 +10,7 @@ export default function Navbar() {
       </Link>
       <ul className="nav-list">
         <li className="nav-item">
-          <Link to="/contact">Contact</Link>
+          <Link to="/About">About</Link>
         </li>
         <li className="nav-item">
           <Link to="/AuthenticationPages/login">Login</Link>
