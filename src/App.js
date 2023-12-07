@@ -14,21 +14,19 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className="container">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/AuthenticationPages/login" element={<Login />} />
-          <Route path="/AuthenticationPages/logout" element={<Logout />} />
-          <Route path="/AuthenticationPages/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/signup" element={<Register />} />
           <Route
-            path="/AuthenticationPages/forgotpass"
+            path="/forgotpass"
             element={<ForgotPass />}
           />
           <Route path="/HomePageDirectories/Generate" element={<Generate />} />
           <Route path="/HomePageDirectories/Blogs" element={<Blogs />} />
         </Routes>
-      </div>
     </>
   );
 }
