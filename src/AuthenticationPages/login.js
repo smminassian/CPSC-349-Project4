@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import pbService from "../services";
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -7,60 +8,75 @@ export default function Login() {
     password: "",
   });
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const nav = useNavigate();
+
+  const handleChange = (fieldName, value) => {
+    const updatedFormData = { ...formData };
+    updatedFormData[fieldName] = value;
+    setFormData(updatedFormData);
+    console.log("Form Data Submitted1:", formData);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here (e.g., make an API call)
-
-    // For now, let's just log the form data
-    console.log("Form Data Submitted:", formData);
+    const user = await pbService.login(formData.email, formData.password);
+    if(user) {
+      console.log(user);
+      console.log("Form Data Submitted for login:", formData);
+      nav("/");
+    } else {
+      alert("Invalid email or password");
+    }
   };
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="bg-green-300 p-8 rounded shadow-md w-96 ">
-        <h1 className="text-2xl font-semibold mb-4 text-center">Login Page</h1>
+    <div className="min-h-screen min-w-screen flex items-center justify-center">
+      <div className="flex flex-col justify-center items-center bg-slate-200 w-96 p-2 pt-10 pb-10 rounded shadow-md">
+        <span className="text-2xl font-bold mb-5">Login</span>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
+            <label className="text-gray-700 text-sm font-bold mb-2">
               Email:
             </label>
             <input
               type="text"
-              name="username"
+              name="email"
               value={formData.email}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-green-500"
+              onChange={(e) => handleChange(e.target.name, e.target.value)}
+              className="w-full p-2 mt-2 border rounded-md focus:outline-none focus:border-green-500"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
+            <label className="text-gray-700 text-sm font-bold mb-2">
               Password:
             </label>
             <input
               type="password"
               name="password"
               value={formData.password}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-green-500"
+              onChange={(e) => handleChange(e.target.name, e.target.value)}
+              className="w-full mt-2 p-2 border rounded-md focus:outline-none focus:border-green-500"
             />
           </div>
-          <button
-            type="submit"
-            className="w-full bg-green-500 text-black py-2 px-4 rounded-md hover:bg-green-600"
-          >
-            Login
-          </button>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="w-32 h-10 bg-green-400 text-black rounded-md hover:bg-white hover:border-green-400 hover:border mt-2 mb-2"
+            >
+              Login
+            </button>
+          </div>
         </form>
-        <div>
+        <div className="flex flex-col justify-center items-center">
+          <span className="text-black text-sm mb-2">Don't have an account? <Link
+            to="/signup"
+            className="text-black text-sm underline"
+          >
+            Sign Up
+          </Link></span>
+          
           <Link
-            to="/AuthenticationPages/forgotpass"
-            className="text-black-500 underline"
+            to="/forgotpass"
+            className="text-black text-sm underline"
           >
             Forgot Password?
           </Link>
