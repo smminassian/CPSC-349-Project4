@@ -6,6 +6,7 @@ import Contact from "./pages/contact";
 import Login from "./AuthenticationPages/login";
 import Logout from "./AuthenticationPages/logout";
 import Register from "./AuthenticationPages/register";
+import ForgotPass from "./AuthenticationPages/forgotpass";
 import Generate from "./HomePageDirectories/Generate";
 import Blogs from "./HomePageDirectories/Blogs";
 
@@ -20,6 +21,10 @@ function App() {
           <Route path="/AuthenticationPages/login" element={<Login />} />
           <Route path="/AuthenticationPages/logout" element={<Logout />} />
           <Route path="/AuthenticationPages/register" element={<Register />} />
+          <Route
+            path="/AuthenticationPages/forgotpass"
+            element={<ForgotPass />}
+          />
           <Route path="/HomePageDirectories/Generate" element={<Generate />} />
           <Route path="/HomePageDirectories/Blogs" element={<Blogs />} />
         </Routes>
