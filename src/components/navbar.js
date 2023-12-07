@@ -10,6 +10,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const checkAuthStatus = async () => {
+      console.log("Checking auth status");
       const user = await pbService.isLoggedIn();
       if (user) {
         setIsAuthenticated(true);
