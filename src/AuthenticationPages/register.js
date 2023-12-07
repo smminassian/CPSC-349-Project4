@@ -30,14 +30,15 @@ export default function Register() {
       alert("Passwords do not match");
       return;
     } else{
-      const user = await pbService.signUp(formData.email, formData.password);
-      if (user) {
-        user = await pbService.login(formData.email, formData.password);
-        setAuthChange(true);
-        nav("/");
-      } else {
-        alert("Invalid email or password");
-      }
+      const user = await pbService.signUp(formData.email, formData.password).then(async (user) => {
+        if (user) {
+          user = await pbService.login(formData.email, formData.password);
+          setAuthChange(true);
+          nav("/");
+        } else {
+          alert("Invalid email or password");
+        }
+      })
     }
   };
 

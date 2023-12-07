@@ -9,7 +9,7 @@ export default function Login() {
     password: "",
   });
 
-  const {setAuthChange} = React.useContext(AuthContext);
+  const { setAuthChange } = React.useContext(AuthContext);
 
   const nav = useNavigate();
 
@@ -23,7 +23,8 @@ export default function Login() {
     e.preventDefault();
     const user = await pbService.login(formData.email, formData.password);
     if(user) {
-      setAuthChange(true);
+      console.log("hi")
+      setAuthChange(prev => !prev);
       nav("/");
     } else {
       alert("Invalid email or password");
