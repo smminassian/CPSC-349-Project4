@@ -6,55 +6,61 @@ import Daniel from "./images/daniel.jpg";
 import github from "./images/github-mark.png";
 import Sebie from "./images/image_67173121.jpg";
 
- function contact(){
+function contact() {
   return (
-    <div className="mainDiv">
-        <h1 className="mainHeader">Meet The Team</h1>
-        <br />
-        <br />
-        <details>
-          <summary>Sebastien Minassian</summary>
-          <div>
-            <img className ="memberPhoto" src={Sebie} alt="sebastien"/>
-            <p>
-              Hi, my name is Sebastien Minassian and I'm currently a junior at Cal
-              State Fullerton. I am a computer science major and
-            </p>
-            <p>I have two cats named Lulu and Mitsy</p>
-            <a href="https://github.com/smminassian">
-              <img className ="gitPNG" src={github} alt="githubImage"/>
-            </a>
-          </div>
-        </details>
-        <br />
-        <details>
-          <summary>Ali Omrani</summary>
-          <img className="memberPhoto" src={Ali} alt="Ali"/>
+    <div className="mainBody">
+      <h1 className="mainHeader">Meet The Team</h1>
+      <br />
+      <br />
+      <details>
+        <summary>Sebastien Minassian</summary>
+        <div classname="member">
+          <img className="memberPhoto" src={Sebie} alt="sebastien" />
+          <p>
+            Hi, my name is Sebastien Minassian and I'm currently a junior at Cal
+            State Fullerton. I am a computer science major and
+          </p>
+          <p>I have two cats named Lulu and Mitsy</p>
+          <a href="https://github.com/smminassian">
+            <img className="gitPhoto" src={github} alt="githubImage" />
+          </a>
+        </div>
+      </details>
+      <br />
+      <details>
+        <summary>Ali Omrani</summary>
+        <div className="member">
+          <img className="memberPhoto" src={Ali} alt="Ali" />
           <p>My name is Ali im a senior comp sci CSUF student. I code and play tennis.</p>
           <a href="https://github.com/eynomr">
-            <img className ="gitPNG" src={github} alt="githubImage"/>
+            <img className="gitPhoto" src={github} alt="githubImage" />
           </a>
-        </details>
-        <br />
-        <details>
-          <summary>Daniel Nyguyen</summary>
-          <img className="memberPhoto" src={Daniel} alt="daniel"/>
+        </div>
+      </details>
+      <br />
+      <details>
+        <summary>Daniel Nyguyen</summary>
+        <div className="member">
+          <img className="memberPhoto" src={Daniel} alt="daniel" />
           <p>Hi, my name is Daniel Nguyen and I am a senior at Cal State Fullerton.
             My favorite thing to do outside of school and work is playing in amateur gaming tournaments with my friends. </p>
           <a href="https://github.com/dnguyen1250">
-            <img className = ""src={github} alt="githubImage"/>
+            <img className="gitPhoto" src={github} alt="githubImage" />
           </a>
-        </details>
-        <br />
-        <details>
-          <summary>Carson Szeder</summary>
-          <img src={Carson} alt="carson"/>
+        </div>
+      </details>
+      <br />
+      <details>
+        <summary>Carson Szeder</summary>
+        <div className="member">
+          <img className="memberPhoto" src={Carson} alt="carson" />
           <p>I played junior college baseball my freshman and sophomore year</p>
           <a href="https://github.com/Carsoncantcode">
-            <img src={github} alt="githubImage"/>
+            <img className="gitPhoto" src={github} alt="githubImage" />
           </a>
-        </details>
-      </div>
+        </div>
+      </details>
+    </div>
   );
 }
 
