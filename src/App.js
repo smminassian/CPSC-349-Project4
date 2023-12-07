@@ -6,13 +6,12 @@ import Contact from "./pages/contact";
 import Login from "./AuthenticationPages/login";
 import Logout from "./AuthenticationPages/logout";
 import Register from "./AuthenticationPages/register";
-import ForgotPass from "./AuthenticationPages/forgotpass";
 import Generate from "./HomePageDirectories/Generate";
-import Blogs from "./HomePageDirectories/Blogs";
+import { AuthProvider } from './provider/AuthContext';
 
 function App() {
   return (
-    <>
+    <AuthProvider>
       <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -20,14 +19,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/signup" element={<Register />} />
-          <Route
-            path="/forgotpass"
-            element={<ForgotPass />}
-          />
-          <Route path="/HomePageDirectories/Generate" element={<Generate />} />
-          <Route path="/HomePageDirectories/Blogs" element={<Blogs />} />
+          <Route path="/generate" element={<Generate />} />
         </Routes>
-    </>
+    </AuthProvider>
   );
 }
 

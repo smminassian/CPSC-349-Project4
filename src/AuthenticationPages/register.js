@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import pbService from "../services";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../provider/AuthContext";
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -8,6 +9,8 @@ export default function Register() {
     password: "",
     confirmPassword: "",
   });
+
+  const { setAuthChange } = React.useContext(AuthContext);
 
   const nav = useNavigate();
 
@@ -30,13 +33,12 @@ export default function Register() {
       const user = await pbService.signUp(formData.email, formData.password);
       if (user) {
         user = await pbService.login(formData.email, formData.password);
+        setAuthChange(true);
         nav("/");
-        console.log("Form Data Submitted for registration:", formData);
       } else {
         alert("Invalid email or password");
       }
     }
-    // replace the console.log statement with your registration logic
   };
 
   return (

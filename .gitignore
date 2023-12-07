@@ -4,3 +4,6 @@ CHANGELOG.md
 LICENSE.md
 pocketbase
 pb_data/
+pb_migrations/
+
+.env

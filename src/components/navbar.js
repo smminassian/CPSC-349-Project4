@@ -1,16 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useRef, useEffect } from "react";
 import pbService from "../services";
-import "./navbar.css";
+import { AuthContext } from "../provider/AuthContext";
+
 
 export default function Navbar() {
+
+  const nav = useNavigate();
+
+  const { authChange } = React.useContext(AuthContext);
+  const {setAuthChange} = React.useContext(AuthContext);
+
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
+    if(!authChange) return;
     const checkAuthStatus = async () => {
-      console.log("Checking auth status");
       const user = await pbService.isLoggedIn();
       if (user) {
         setIsAuthenticated(true);
@@ -18,12 +25,14 @@ export default function Navbar() {
       }
     };
     checkAuthStatus();
-  } , []);
+  } , [authChange]);
 
   const handleLogOut = async () => {
     await pbService.logout();
+    setAuthChange(false);
     setIsAuthenticated(false);
     setUser(null);
+    nav('/login')
   }
 
   return (
@@ -49,8 +58,8 @@ export default function Navbar() {
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
               
-                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Blog Generator</a>
-                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Team</a>
+                {isAuthenticated && <Link to='/generate' className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Blog Generator</Link>}
+
         
               </div>
             </div>
