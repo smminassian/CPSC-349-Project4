@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import pbService from "../services";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../provider/AuthContext";
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -9,42 +10,44 @@ export default function Register() {
     confirmPassword: "",
   });
 
+  const { setAuthChange } = React.useContext(AuthContext);
+
   const nav = useNavigate();
 
-  // Function to handle changes in form input fields
+  // handle changes in form input fields
   const handleChange = (fieldName, value) => {
     const updatedFormData = { ...formData };
     updatedFormData[fieldName] = value;
     setFormData(updatedFormData);
   };
 
-  // Function to handle form submission
+  // handle form submission
   const handleSubmit = async (e) => {
     // prevent the default form submission behavior
     e.preventDefault();
-    // Add your registration logic here
+    // registration logic here
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match");
       return;
-    } else{
-      const user = await pbService.signUp(formData.email, formData.password);
-      if (user) {
-        user = await pbService.login(formData.email, formData.password);
-        nav("/");
-        console.log("Form Data Submitted for registration:", formData);
-      } else {
-        alert("Invalid email or password");
-      }
+    } else {
+      const user = await pbService
+        .signUp(formData.email, formData.password)
+        .then(async (user) => {
+          if (user) {
+            user = await pbService.login(formData.email, formData.password);
+            setAuthChange(true);
+            nav("/");
+          } else {
+            alert("Invalid email or password");
+          }
+        });
     }
-    // replace the console.log statement with your registration logic
   };
 
   return (
     <div className="min-h-screen min-w-screen flex items-center justify-center">
       <div className="flex flex-col justify-center items-center bg-slate-200 w-96 p-2 pt-10 pb-10 rounded shadow-md">
-        <span className="text-2xl font-bold mb-5">
-          Sign Up
-        </span>
+        <span className="text-2xl font-bold mb-5">Sign Up</span>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="text-gray-700 text-sm font-bold mb-2">
@@ -92,12 +95,12 @@ export default function Register() {
           </div>
         </form>
         <div className="flex flex-col justify-center items-center">
-          <span className="text-black text-sm mb-2">Already have an account? <Link
-            to="/login"
-            className="text-black text-sm underline"
-          >
-            login
-          </Link></span>
+          <span className="text-black text-sm mb-2">
+            Already have an account?{" "}
+            <Link to="/login" className="text-black text-sm underline">
+              login
+            </Link>
+          </span>
         </div>
       </div>
     </div>

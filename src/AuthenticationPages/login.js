@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import pbService from "../services";
+import { AuthContext } from "../provider/AuthContext";
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -8,21 +9,22 @@ export default function Login() {
     password: "",
   });
 
+  const { setAuthChange } = React.useContext(AuthContext);
+
   const nav = useNavigate();
 
   const handleChange = (fieldName, value) => {
     const updatedFormData = { ...formData };
     updatedFormData[fieldName] = value;
     setFormData(updatedFormData);
-    console.log("Form Data Submitted1:", formData);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = await pbService.login(formData.email, formData.password);
     if(user) {
-      console.log(user);
-      console.log("Form Data Submitted for login:", formData);
+      console.log("hi")
+      setAuthChange(prev => !prev);
       nav("/");
     } else {
       alert("Invalid email or password");
@@ -74,12 +76,6 @@ export default function Login() {
             Sign Up
           </Link></span>
           
-          <Link
-            to="/forgotpass"
-            className="text-black text-sm underline"
-          >
-            Forgot Password?
-          </Link>
         </div>
       </div>
     </div>
