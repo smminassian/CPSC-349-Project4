@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import generateBlogs from "../openaiServices";
 import pbService from "../services";
-import { useNavigate } from "react-router-dom";
 
 const GeneratePage = () => {
-  const nav = useNavigate();
-  const [prompt, setPrompt] = useState("");
-  const [generatedBlogs, setGeneratedBlogs] = useState([]);
-  const [loading, setLoading] = useState(false);
+  // component states
+  const [prompt, setPrompt] = useState(""); // set user prompt
+  const [generatedBlogs, setGeneratedBlogs] = useState([]); // set all generated blogs
+  const [loading, setLoading] = useState(false); // set loading flag for api calls
 
   useEffect(() => {
+    // Get all blogs from database for specific user
     const getAllBlogs = async () => {
       setLoading(true);
       const blogs = await pbService.getBlogs();
@@ -28,6 +28,7 @@ const GeneratePage = () => {
     e.preventDefault();
 
     setLoading(true);
+    // call OpenAI service to generate new prompt
     const response = await generateBlogs(prompt)
     .then( async (response) => {
       const content = response 

@@ -6,15 +6,17 @@ import Daniel from "./images/daniel.jpg";
 import github from "./images/github-mark.png";
 import Sebie from "./images/image_67173121.jpg";
 
-function contact() {
+function About() {
   return (
-    <div className="mainBody">
-      <h1 className="mainHeader">Meet The Team</h1>
+    <div className="min-w-screen min-h-screen p-10 pr-36 pl-36">
+      <div className="flex justify-center items-center">
+        <span className="text-black text-4xl font-bold">Meet The Team</span>
+      </div>
       <br />
       <br />
       <details>
         <summary>Sebastien Minassian</summary>
-        <div classname="member">
+        <div className="member">
           <img className="memberPhoto" src={Sebie} alt="sebastien" />
           <p>
             Hi, my name is Sebastien Minassian and I'm currently a junior at Cal
@@ -64,4 +66,4 @@ function contact() {
   );
 }
 
-export default contact;
+export default About;

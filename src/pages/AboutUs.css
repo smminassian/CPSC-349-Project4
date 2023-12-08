@@ -10,10 +10,10 @@
 }
 
 .member{
-    animation: fadeIn 4s ease-in;
+    animation: fadeIn 3s ease-in;
 }
 .mainBody{
-    animation: fadeIn 5s ease-in;
+    animation: fadeIn 3s ease-in;
 }
 
 
@@ -28,6 +28,6 @@
 }
 
 .gitPhoto{
-    width:200px;
-    height:200px;
+    width:100px;
+    height:100px;
 }

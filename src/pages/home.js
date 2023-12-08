@@ -1,6 +1,4 @@
-import { Link } from "react-router-dom";
 import React from "react";
-import "./home.css";
 import homePagePic from "../assets/homepage.png";
 
 export default function HomePage() {
