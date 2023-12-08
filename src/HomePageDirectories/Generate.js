@@ -29,7 +29,7 @@ const GeneratePage = () => {
 
     setLoading(true);
     // call OpenAI service to generate new prompt
-    const response = await generateBlogs(prompt)
+    await generateBlogs(prompt)
     .then( async (response) => {
       const content = response 
       const new_blog = await pbService.createBlog(content);

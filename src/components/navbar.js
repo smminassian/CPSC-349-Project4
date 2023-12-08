@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import pbService from "../services";
 import { AuthContext } from "../provider/AuthContext";
 
@@ -93,8 +93,8 @@ export default function Navbar() {
 
       <div className="sm:hidden" id="mobile-menu">
         <div className="space-y-1 px-2 pb-3 pt-2">
-          <a href="#" className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Blog Generator</a>
-          <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Team</a>
+          <Link to='/generate' className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Blog Generator</Link>
+          <Link to='/About' className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</Link>
 
         </div>
       </div>

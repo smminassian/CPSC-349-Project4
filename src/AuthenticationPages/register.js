@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState } from "react";
 import pbService from "../services";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthContext";
@@ -30,7 +30,7 @@ export default function Register() {
       alert("Passwords do not match");
       return;
     } else {
-      const user = await pbService
+      await pbService
         .signUp(formData.email, formData.password)
         .then(async (user) => {
           if (user) {
